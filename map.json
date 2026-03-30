@@ -1,0 +1,395 @@
+{
+  "template": {
+    "name": "Typst Academic Presentation Template",
+    "version": "1.0.0",
+    "description": "Professional academic presentation template with LaTeX-inspired components",
+    "theme": "clean-math-presentation",
+    "style": "academic, minimal, professional",
+    "total_components": 40
+  },
+  "library_structure": {
+    "lib/lib.typ": "Main entry point - imports all components",
+    "lib/components.typ": "Layout and utility components",
+    "lib/code-blocks.typ": "Code display components",
+    "lib/theorem-boxes.typ": "Mathematical and algorithm components",
+    "lib/charts.typ": "Data visualization components"
+  },
+  "components": {
+    "layout": {
+      "two-columns": {
+        "file": "lib/components.typ",
+        "params": [
+          "left",
+          "right",
+          "ratio (optional, default: 50%)"
+        ],
+        "example": "#two-columns([Left], [Right], ratio: 40%)"
+      },
+      "three-columns": {
+        "file": "lib/components.typ",
+        "params": [
+          "col1",
+          "col2",
+          "col3"
+        ],
+        "example": "#three-columns([A], [B], [C])"
+      },
+      "slide-split": {
+        "file": "lib/components.typ",
+        "params": [
+          "left-content",
+          "right-content",
+          "proportion (optional)"
+        ],
+        "example": "#slide-split([Text], [Image])"
+      },
+      "slide-content": {
+        "file": "lib/components.typ",
+        "params": [
+          "body",
+          "max-height (optional)"
+        ],
+        "example": "#slide-content[Content]"
+      },
+      "paper-figure": {
+        "file": "lib/components.typ",
+        "params": [
+          "img-content",
+          "caption (optional)",
+          "max-height (optional)"
+        ],
+        "example": "#paper-figure(image(\"path.svg\", fit: \"contain\"), caption: [Text], max-height: 30%)"
+      }
+    },
+    "content_boxes": {
+      "callout": {
+        "file": "lib/components.typ",
+        "params": [
+          "type (info/warning/danger/success)",
+          "title (optional)",
+          "body"
+        ],
+        "example": "#callout(type: \"info\", title: \"Note\")[Content]"
+      },
+      "paper-insight": {
+        "file": "lib/components.typ",
+        "params": [
+          "body"
+        ],
+        "example": "#paper-insight[Key takeaway message]"
+      },
+      "highlight-box": {
+        "file": "lib/components.typ",
+        "params": [
+          "body",
+          "color (optional)"
+        ],
+        "example": "#highlight-box(color: blue)[Text]"
+      },
+      "side-note": {
+        "file": "lib/components.typ",
+        "params": [
+          "body"
+        ],
+        "example": "#side-note[Additional context]"
+      }
+    },
+    "lists": {
+      "custom-list": {
+        "file": "lib/components.typ",
+        "params": [
+          "items (array)",
+          "marker (optional)"
+        ],
+        "example": "#custom-list((\"A\", \"B\"), marker: \"\u2192\")"
+      },
+      "steps": {
+        "file": "lib/components.typ",
+        "params": [
+          "...items (variadic)"
+        ],
+        "example": "#steps(\"Step 1\", \"Step 2\")"
+      }
+    },
+    "comparisons": {
+      "paper-feature-comparison": {
+        "file": "lib/components.typ",
+        "params": [
+          "feature",
+          "old",
+          "new"
+        ],
+        "example": "#paper-feature-comparison(\"Feature\", [Old], [New])"
+      },
+      "paper-pros-cons": {
+        "file": "lib/components.typ",
+        "params": [
+          "pros",
+          "cons"
+        ],
+        "example": "#paper-pros-cons([Pros list], [Cons list])"
+      }
+    },
+    "code": {
+      "paper-code": {
+        "file": "lib/code-blocks.typ",
+        "params": [
+          "code-block",
+          "caption (optional)",
+          "label (optional)"
+        ],
+        "example": "#paper-code(caption: [Title])[```python\\ncode\\n```]"
+      },
+      "terminal-output": {
+        "file": "lib/code-blocks.typ",
+        "params": [
+          "output-block",
+          "title (optional)"
+        ],
+        "example": "#terminal-output(title: \"cmd\")[```text\\noutput\\n```]"
+      },
+      "github-latex-diff": {
+        "file": "lib/code-blocks.typ",
+        "params": [
+          "old-file",
+          "new-file",
+          "old-code",
+          "new-code"
+        ],
+        "example": "#github-latex-diff(old-file: \"a.py\", new-file: \"b.py\", old-code: [...], new-code: [...])"
+      },
+      "unified-diff": {
+        "file": "lib/code-blocks.typ",
+        "params": [
+          "file",
+          "diff-block"
+        ],
+        "example": "#unified-diff(file: \"config.py\", diff-block: ```diff\\n...\\n```)"
+      },
+      "code-with-lines": {
+        "file": "lib/code-blocks.typ",
+        "params": [
+          "code",
+          "start"
+        ],
+        "example": "#code-with-lines(\"code\", start: 1)"
+      },
+      "inline-code": {
+        "file": "lib/code-blocks.typ",
+        "params": [
+          "code"
+        ],
+        "example": "#inline-code(\"variable\")"
+      }
+    },
+    "math": {
+      "paper-theorem": {
+        "file": "lib/theorem-boxes.typ",
+        "params": [
+          "title (optional)",
+          "name (optional)",
+          "body"
+        ],
+        "example": "#paper-theorem(title: \"Theorem 1\", name: \"Main\")[Content]"
+      },
+      "paper-proof": {
+        "file": "lib/theorem-boxes.typ",
+        "params": [
+          "body",
+          "title (optional)"
+        ],
+        "example": "#paper-proof[Proof steps]"
+      },
+      "paper-algorithm": {
+        "file": "lib/theorem-boxes.typ",
+        "params": [
+          "title (optional)",
+          "name (optional)",
+          "inputs (optional)",
+          "outputs (optional)",
+          "body"
+        ],
+        "example": "#paper-algorithm(name: \"Sort\", inputs: \"Array A\", outputs: \"Sorted A\")[+ Step 1]"
+      },
+      "definition": {
+        "file": "lib/theorem-boxes.typ",
+        "params": [
+          "title (optional)",
+          "body"
+        ],
+        "example": "#definition(title: \"Graph\")[Definition]"
+      },
+      "example": {
+        "file": "lib/theorem-boxes.typ",
+        "params": [
+          "title (optional)",
+          "body"
+        ],
+        "example": "#example(title: \"Case 1\")[Example]"
+      },
+      "lemma": {
+        "file": "lib/theorem-boxes.typ",
+        "params": [
+          "title (optional)",
+          "body"
+        ],
+        "example": "#lemma(title: \"Helper\")[Lemma]"
+      },
+      "corollary": {
+        "file": "lib/theorem-boxes.typ",
+        "params": [
+          "body"
+        ],
+        "example": "#corollary[Follows from...]"
+      },
+      "remark": {
+        "file": "lib/theorem-boxes.typ",
+        "params": [
+          "body"
+        ],
+        "example": "#remark[Note that...]"
+      },
+      "note": {
+        "file": "lib/theorem-boxes.typ",
+        "params": [
+          "body"
+        ],
+        "example": "#note[Important note]"
+      },
+      "important": {
+        "file": "lib/theorem-boxes.typ",
+        "params": [
+          "body"
+        ],
+        "example": "#important[Critical info]"
+      },
+      "assumption": {
+        "file": "lib/theorem-boxes.typ",
+        "params": [
+          "body"
+        ],
+        "example": "#assumption[We assume...]"
+      },
+      "quote-block": {
+        "file": "lib/theorem-boxes.typ",
+        "params": [
+          "body",
+          "author (optional)"
+        ],
+        "example": "#quote-block([Quote], author: \"Name\")"
+      }
+    },
+    "charts": {
+      "paper-metric": {
+        "file": "lib/charts.typ",
+        "params": [
+          "title",
+          "value",
+          "subtext (optional)"
+        ],
+        "example": "#paper-metric(title: \"Speed\", value: \"1.2s\", subtext: \"Improved\")"
+      },
+      "paper-progress": {
+        "file": "lib/charts.typ",
+        "params": [
+          "percentage",
+          "label (optional)"
+        ],
+        "example": "#paper-progress(percentage: 75, label: \"Complete\")"
+      },
+      "paper-badge": {
+        "file": "lib/charts.typ",
+        "params": [
+          "status",
+          "type (neutral/success/error/warning)"
+        ],
+        "example": "#paper-badge(\"Valid\", type: \"success\")"
+      },
+      "academic-bar-chart": {
+        "file": "lib/charts.typ",
+        "params": [
+          "data (array of tuples)",
+          "max-value",
+          "chart-height",
+          "bar-width"
+        ],
+        "example": "#academic-bar-chart(data: ((\"A\", 45), (\"B\", 120)), max-value: 150, chart-height: 120pt, bar-width: 40pt)"
+      },
+      "paper-table": {
+        "file": "lib/charts.typ",
+        "params": [
+          "columns",
+          "headers",
+          "...cells (variadic)"
+        ],
+        "example": "#paper-table(columns: (1fr, 1fr), headers: (\"A\", \"B\"), [1], [2], [3], [4])"
+      },
+      "key-value-list": {
+        "file": "lib/charts.typ",
+        "params": [
+          "...pairs (variadic tuples)"
+        ],
+        "example": "#key-value-list((\"Key\", \"Value\"), (\"Type\", \"String\"))"
+      },
+      "timeline-item": {
+        "file": "lib/charts.typ",
+        "params": [
+          "date",
+          "title",
+          "description"
+        ],
+        "example": "#timeline-item(\"2026-01\", \"Event\", \"Description\")"
+      },
+      "comparison-table": {
+        "file": "lib/charts.typ",
+        "params": [
+          "items (array of tuples)"
+        ],
+        "example": "#comparison-table(((\"Before\", \"After\"), (\"Old\", \"New\")))"
+      }
+    },
+    "utility": {
+      "section-divider": {
+        "file": "lib/components.typ",
+        "params": [
+          "title"
+        ],
+        "example": "#section-divider(\"New Section\")"
+      },
+      "footer-note": {
+        "file": "lib/components.typ",
+        "params": [
+          "body"
+        ],
+        "example": "#footer-note[Source: 2026]"
+      }
+    }
+  },
+  "examples": {
+    "01-research-paper.typ": "Academic research with theorems, algorithms, results",
+    "02-code-heavy.typ": "Technical implementation with extensive code",
+    "03-data-visualization.typ": "Metrics, charts, and visual data",
+    "04-theorem-proof.typ": "Mathematical content with formal definitions",
+    "05-comparison-study.typ": "Comparing approaches or systems",
+    "06-algorithm-focus.typ": "Detailed algorithm presentation",
+    "07-progress-report.typ": "Project status and milestone tracking",
+    "08-image-gallery.typ": "Visual content with various layouts",
+    "09-minimal-clean.typ": "Simple focused presentation",
+    "10-comprehensive-demo.typ": "Complete component showcase"
+  },
+  "design_principles": {
+    "typography": "Computer Modern font family",
+    "colors": "Minimal - black, white, gray, pale accents",
+    "borders": "Sharp corners (0pt radius)",
+    "spacing": "Compact to prevent overflow",
+    "tables": "Booktabs-style",
+    "code": "8pt monospace, light gray background",
+    "math": "Italicized theorems, formal proofs"
+  },
+  "usage": {
+    "import": "#import \"lib/lib.typ\": *",
+    "slide": "#slide(title: \"Title\")[#slide-content[Content]]",
+    "compile": "typst compile presentation.typ",
+    "compile_examples": "typst compile --root .. example.typ"
+  }
+}

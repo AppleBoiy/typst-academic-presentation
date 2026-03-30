@@ -1,0 +1,16 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#e8e8e8" stroke="#333" stroke-width="2"/>
+  
+  <!-- Mountain silhouette -->
+  <polygon points="0,300 80,180 150,220 220,140 300,200 400,120 400,300" fill="#d0d0d0"/>
+  
+  <!-- Sun -->
+  <circle cx="320" cy="80" r="30" fill="#f0f0f0"/>
+  
+  <text x="200" y="260" font-family="Arial" font-size="18" text-anchor="middle" dominant-baseline="middle" fill="#666">
+    Photo Placeholder
+  </text>
+  <text x="200" y="285" font-family="Arial" font-size="14" text-anchor="middle" dominant-baseline="middle" fill="#999">
+    400 × 300
+  </text>
+</svg>

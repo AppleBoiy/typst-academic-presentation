@@ -1,0 +1,12 @@
+[package]
+name = "presentation-template"
+version = "1.0.0"
+entrypoint = "lib/lib.typ"
+authors = ["AppleBoiy"]
+license = "MIT"
+description = "Comprehensive Typst presentation template with 50+ reusable components"
+homepage = "https://github.com/your-repo/typst-presentation-template"
+repository = "https://github.com/your-repo/typst-presentation-template"
+keywords = ["presentation", "slides", "academic", "template", "components"]
+categories = ["presentation"]
+disciplines = ["computer-science", "mathematics"]
