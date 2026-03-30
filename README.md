@@ -176,18 +176,12 @@ This template is built upon and inspired by excellent work from the Typst commun
   - Provided the foundation for the academic styling
   - Created by Luca Salvarani
 
+- **[JoshuaLampert/clean-math-presentation](https://github.com/JoshuaLampert/clean-math-presentation)** - Design inspiration
+  - Inspired the clean, academic presentation style
+  - Demonstrated effective use of minimal design principles
+  - Created by Joshua Lampert
+
 This template extends these foundations with 40+ custom academic components, comprehensive examples, and enhanced documentation for research and technical presentations.
-
-### What We Added
-
-- 40+ LaTeX-inspired components (theorems, algorithms, code blocks, charts)
-- 10 complete example presentations for different use cases
-- Automatic content fitting and overflow prevention
-- Booktabs-style tables and academic typography
-- Comprehensive component reference (map.json)
-- AI agent steering guide for assisted creation
-- Enhanced image handling with automatic sizing
-
 ## Need Help?
 
 1. Check `map.json` for component details
