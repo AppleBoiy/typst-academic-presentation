@@ -24,15 +24,15 @@
 #slide(title: "Research Problem")[
   #slide-content[
     Traditional autonomous driving system (ADS) testing relies on manually crafted scenarios, which limits edge-case discovery and scalability.
-    
+
     #v(1em)
-    
+
     #paper-insight[
       Manual test creation yields only 45 edge cases per 500 scenarios, creating a critical coverage gap in safety validation.
     ]
-    
+
     #v(1em)
-    
+
     Our approach: Leverage Knowledge Graphs and LLMs to automatically generate realistic accident scenarios at scale.
   ]
 ]
@@ -42,13 +42,13 @@
     #slide-split(
       [
         *Three-Phase Pipeline:*
-        
+
         + Extract accident data from reports
         + Cluster scenarios using DBSCAN
         + Generate test cases via LLM
-        
+
         #v(1em)
-        
+
         Each phase builds upon structured semantic relationships stored in the Knowledge Graph.
       ],
       [
@@ -67,16 +67,17 @@
   #slide-content[
     #paper-algorithm(
       name: "Density-Based Scenario Extraction",
-      inputs: "Knowledge Graph $G$, radius $epsilon$",
-      outputs: "Set of scenario clusters $C$"
-    )[
-      + Retrieve all nodes $n in G$ matching target ontology.
-      + Compute feature embeddings using LLM.
-      + Initialize spatial index (R-tree).
-      + *for each* unvisited node $x$ *do*:
-        + *if* density $gt.eq$ `min_samples` *then* form cluster.
-      + *return* $C$.
-    ]
+      inputs: [Knowledge Graph $G$, radius $epsilon$],
+      outputs: [Set of scenario clusters $C$],
+      steps: (
+        [Retrieve all nodes $n in G$ matching target ontology.],
+        [Compute feature embeddings using LLM.],
+        [Initialize spatial index (R-tree).],
+        [*for each* unvisited node $x$ *do*:
+          + *if* density $gt.eq$ `min_samples` *then* form cluster.],
+        [*return* $C$.],
+      )
+    )
   ]
 ]
 
@@ -131,9 +132,9 @@
     + Novel KG+LLM architecture for automated test generation
     + 10× improvement in edge-case discovery
     + Scalable pipeline for continuous integration
-    
+
     #v(2em)
-    
+
     #paper-insight[
       By leveraging semantic relationships in accident data, we enable systematic exploration of the ADS operational design domain.
     ]

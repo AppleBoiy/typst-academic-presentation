@@ -115,7 +115,10 @@ Follow this structure:
 ### For Math/Theory
 - **Theorem:** `#paper-theorem(title: "Theorem 1", name: "Name")[Content]`
 - **Proof:** `#paper-proof[Proof steps with automatic Q.E.D.]`
-- **Algorithm:** `#paper-algorithm(name: "Name", inputs: "...", outputs: "...")[+ Step 1\n+ Step 2]`
+- **Algorithm (≤ 10 steps):** `#paper-algorithm(name: "Name", inputs: [...], outputs: [...], steps: ([Step 1], [Step 2]))`
+- **Algorithm (11–20 steps):** same as above with 11–20 items in `steps:` — auto 2-column, 0.88 em font
+- **Algorithm (> 20 steps):** same as above with > 20 items in `steps:` — auto 3-column, 0.80 em font
+- **Algorithm legacy (no auto-column):** trailing `[body]` still works; add `count: N` to trigger multi-column
 - **Definition:** `#definition(title: "Name")[Definition]`
 
 ### For Data/Metrics
@@ -209,26 +212,47 @@ Follow this structure:
 ```
 
 ### Pattern 3: Algorithm with Explanation
+
+Short algorithm (≤ 10 steps) — single column:
 ```typst
 #slide(title: "Method")[
   #slide-content[
     #paper-algorithm(
       name: "Process Data",
-      inputs: "Dataset D",
-      outputs: "Results R"
-    )[
-      + Load data from D
-      + Apply transformation
-      + *for each* item *do*:
-        + Process item
-      + *return* R
-    ]
-    
+      inputs: [Dataset $D$],
+      outputs: [Results $R$],
+      steps: (
+        [Load data from $D$],
+        [Apply transformation],
+        [*for each* item *do*:
+          + Process item],
+        [*return* $R$],
+      )
+    )
+
     #v(1em)
-    
+
     #paper-insight[
-      This approach reduces complexity from O(n²) to O(n log n).
+      This approach reduces complexity from $O(n^2)$ to $O(n log n)$.
     ]
+  ]
+]
+```
+
+Long algorithm (> 10 steps) — auto multi-column:
+```typst
+#slide(title: "Full Pipeline")[
+  #slide-content[
+    #paper-algorithm(
+      name: "Extended Pipeline",
+      inputs: [Input $X$],
+      outputs: [Output $Y$],
+      steps: (
+        [Stage 1 — Preprocessing],
+        [Stage 2 — Feature extraction],
+        // ... 15 total steps → auto 2-column, 0.88 em font
+      )
+    )
   ]
 ]
 ```
@@ -297,6 +321,21 @@ Follow this structure:
 ### Compilation Error from Examples
 **Solution:** Use `typst compile --root .. example.typ` from examples folder
 
+### Math Symbols `$...$` Not Rendering in `inputs` / `outputs`
+**Cause:** Strings `"..."` are plain text — `$G$` stays literal. Content blocks parse math.
+**Solution:** Use `[...]` instead of `"..."`:
+```typst
+// Wrong — math not parsed
+inputs: "Knowledge Graph $G$, radius $epsilon$"
+
+// Correct — math rendered
+inputs: [Knowledge Graph $G$, radius $epsilon$]
+```
+
+### Algorithm Shows Raw Source Code Instead of Rendering
+**Cause:** This was a bug in `theorem-boxes.typ` where the block body used markup mode `[...]` instead of code mode `{...}`, causing function calls like `text(...)`, `v()`, `if` to render as literal text.
+**Status:** Fixed. If you see this symptom, verify you are using the latest `theorem-boxes.typ`.
+
 ## Best Practices
 
 1. **One idea per slide** - Keep slides focused
@@ -321,6 +360,8 @@ Before providing code to user:
 - [ ] Added fit: "contain" to images
 - [ ] Included max-height for grid images
 - [ ] Used proper code block syntax
+- [ ] Used `steps: (...)` array (not trailing `[body]`) for all `paper-algorithm` calls
+- [ ] Used `[...]` content blocks (not `"..."` strings) for `inputs`/`outputs` when math is present
 - [ ] Tested example compiles (mentally verify syntax)
 - [ ] Provided clear explanation of what each part does
 
